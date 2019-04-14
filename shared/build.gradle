@@ -2,8 +2,8 @@ apply plugin: 'kotlin-multiplatform'
 
 kotlin {
     targets {
-        final def iOSTarget = System.getenv('SDK_NAME')?.startsWith("iphoneos")  \
-                               ? presets.iosArm64 : presets.iosX64
+        final def iOSTarget = System.getenv('SDK_NAME')?.startsWith("iphoneos")   \
+                                ? presets.iosArm64 : presets.iosX64
 
         fromPreset(iOSTarget, 'ios') {
             binaries {
@@ -17,6 +17,11 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation 'org.jetbrains.kotlin:kotlin-stdlib-common'
+
+            implementation Deps.ktor_client_core
+            implementation Deps.ktor_client_json
+            implementation Deps.coroutines_core_common
+            implementation Deps.serialization_runtime_common
         }
     }
 }
