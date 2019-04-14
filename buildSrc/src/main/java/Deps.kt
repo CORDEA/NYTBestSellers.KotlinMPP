@@ -13,4 +13,8 @@ object Deps {
     private val serialization_version = "0.11.0"
     val serialization_runtime_common =
         "org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:$serialization_version"
+
+    private val koin_version = "2.0.0-rc-2"
+    val koin_core = "org.koin:koin-core:$koin_version"
+    val koin_core_ext = "org.koin:koin-core-ext:$koin_version"
 }

@@ -22,6 +22,8 @@ kotlin {
             implementation Deps.ktor_client_json
             implementation Deps.coroutines_core_common
             implementation Deps.serialization_runtime_common
+            implementation Deps.koin_core
+            implementation Deps.koin_core_ext
         }
     }
 }
