@@ -9,6 +9,7 @@ object Deps {
     val ktor_client_json = "io.ktor:ktor-client-json:$ktor_version"
     val ktor_client_core_jvm = "io.ktor:ktor-client-core-jvm:$ktor_version"
     val ktor_client_json_jvm = "io.ktor:ktor-client-json-jvm:$ktor_version"
+    val ktor_client_android = "io.ktor:ktor-client-android:$ktor_version"
 
     private val coroutines_version = "1.2.0"
     val coroutines_core_common = "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:$coroutines_version"

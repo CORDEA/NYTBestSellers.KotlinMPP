@@ -32,6 +32,7 @@ kotlin {
 
             implementation Deps.ktor_client_core_jvm
             implementation Deps.ktor_client_json_jvm
+            implementation Deps.ktor_client_android
             implementation Deps.coroutines_core
             implementation Deps.serialization_runtime
         }
