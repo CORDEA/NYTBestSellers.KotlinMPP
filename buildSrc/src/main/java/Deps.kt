@@ -25,4 +25,5 @@ object Deps {
     val koin_core = "org.koin:koin-core:$koin_version"
     val koin_core_ext = "org.koin:koin-core-ext:$koin_version"
     val koin_android = "org.koin:koin-android:$koin_version"
+    val koin_android_scope = "org.koin:koin-android-scope:$koin_version"
 }
