@@ -2,6 +2,7 @@ object Deps {
     private val kotlin_version = "1.3.30-eap-11"
     val kotlin_gradle_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    val kotlin_serialization = "org.jetbrains.kotlin:kotlin-serialization:$kotlin_version"
 
     private val ktor_version = "1.1.3"
     val ktor_client_core = "io.ktor:ktor-client-core:$ktor_version"
