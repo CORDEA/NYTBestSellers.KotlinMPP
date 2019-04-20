@@ -9,4 +9,6 @@ class MainListItem(private val model: MainListItemModel) : BindableItem<ListItem
     override fun bind(viewBinding: ListItemMainBinding, position: Int) {
         viewBinding.model = model
     }
+
+    override fun getId(): Long = model.position
 }
