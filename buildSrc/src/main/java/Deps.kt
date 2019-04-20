@@ -32,4 +32,10 @@ object Deps {
     val groupie = "com.xwray:groupie:$groupie_version"
     val groupie_extensions = "com.xwray:groupie-kotlin-android-extensions:$groupie_version"
     val groupie_databinding = "com.xwray:groupie-databinding:$groupie_version"
+
+    private val nav_version = "1.0.0"
+    val navigation_fragment = "android.arch.navigation:navigation-fragment:$nav_version"
+    val navigation_fragment_ktx = "android.arch.navigation:navigation-fragment-ktx:$nav_version"
+    val navigation_ui = "android.arch.navigation:navigation-ui:$nav_version"
+    val navigation_ui_ktx = "android.arch.navigation:navigation-ui-ktx:$nav_version"
 }

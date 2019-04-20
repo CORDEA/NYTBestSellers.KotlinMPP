@@ -42,6 +42,10 @@ dependencies {
     implementation Deps.groupie
     implementation Deps.groupie_extensions
     implementation Deps.groupie_databinding
+    implementation Deps.navigation_fragment
+    implementation Deps.navigation_fragment_ktx
+    implementation Deps.navigation_ui
+    implementation Deps.navigation_ui_ktx
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
