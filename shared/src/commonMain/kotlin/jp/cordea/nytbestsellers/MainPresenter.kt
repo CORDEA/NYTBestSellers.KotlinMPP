@@ -27,7 +27,7 @@ internal class MainPresenter(
     override fun loadItems(id: String) {
         launch {
             view.updateItems(
-                listsRepository.getLists().toModels()
+                listsRepository.getLists(id).toModels()
             )
         }
     }

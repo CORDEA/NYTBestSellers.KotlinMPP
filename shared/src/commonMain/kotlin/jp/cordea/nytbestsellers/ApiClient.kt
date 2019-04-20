@@ -35,19 +35,22 @@ internal class ApiClient(private val token: String) {
         }
     }
 
-    suspend fun getLists(): ListsResponse = client.get {
-        buildApiUrl(GET_LISTS_PATH)
+    suspend fun getLists(list: String): ListsResponse = client.get {
+        buildApiUrl(GET_LISTS_PATH) {
+            parameter("list", list)
+        }
     }
 
     suspend fun getListNames(): ListNamesResponse = client.get {
         buildApiUrl(GET_LIST_NAMES_PATH)
     }
 
-    private fun HttpRequestBuilder.buildApiUrl(path: String) {
+    private fun HttpRequestBuilder.buildApiUrl(path: String, options: HttpRequestBuilder.() -> Unit = {}) {
         url {
             takeFrom(BASE_URL)
             encodedPath = path
             parameter("api-key", token)
+            options()
         }
     }
 }
