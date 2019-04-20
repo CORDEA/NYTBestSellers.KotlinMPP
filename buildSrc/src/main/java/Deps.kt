@@ -4,7 +4,7 @@ object Deps {
     val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     val kotlin_serialization = "org.jetbrains.kotlin:kotlin-serialization:$kotlin_version"
 
-    private val ktor_version = "1.1.3"
+    private val ktor_version = "1.1.4"
     val ktor_client_core = "io.ktor:ktor-client-core:$ktor_version"
     val ktor_client_json = "io.ktor:ktor-client-json:$ktor_version"
     val ktor_client_core_jvm = "io.ktor:ktor-client-core-jvm:$ktor_version"
