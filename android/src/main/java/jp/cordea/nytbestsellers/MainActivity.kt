@@ -3,8 +3,10 @@ package jp.cordea.nytbestsellers
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.content_main.*
 import org.koin.android.scope.currentScope
 import org.koin.core.parameter.parametersOf
 
@@ -44,5 +46,10 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     }
 
     override fun updateSpinnerItems(items: List<String>) {
+        spinner.adapter = ArrayAdapter<String>(
+            this,
+            android.R.layout.simple_spinner_dropdown_item,
+            items
+        )
     }
 }
