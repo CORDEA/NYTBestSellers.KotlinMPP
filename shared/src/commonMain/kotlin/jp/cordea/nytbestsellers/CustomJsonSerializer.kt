@@ -4,7 +4,7 @@ import io.ktor.client.features.json.JsonSerializer
 import io.ktor.client.features.json.serializer.KotlinxSerializer
 import io.ktor.http.content.OutgoingContent
 
-class CustomJsonSerializer(
+internal class CustomJsonSerializer(
     private val serializer: KotlinxSerializer = KotlinxSerializer()
 ) : JsonSerializer by serializer {
     override fun write(data: Any): OutgoingContent {
