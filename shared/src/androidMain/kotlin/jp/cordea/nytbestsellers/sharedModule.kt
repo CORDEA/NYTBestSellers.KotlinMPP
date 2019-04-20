@@ -7,8 +7,10 @@ val sharedModule = module {
     single { ApiClient(getProperty("token")) }
     single { ListNamesRemoteDataSource(get()) }
     single { ListNamesRepository(get()) }
+    single { ListsRemoteDataSource(get()) }
+    single { ListsRepository(get()) }
 }
 
 fun ScopeSet.bindPresenter() {
-    scoped<MainContract.Presenter> { (view: MainContract.View) -> MainPresenter(view, get()) }
+    scoped<MainContract.Presenter> { (view: MainContract.View) -> MainPresenter(view, get(), get()) }
 }

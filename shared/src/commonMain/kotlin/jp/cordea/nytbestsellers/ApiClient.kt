@@ -25,6 +25,7 @@ internal class ApiClient(private val token: String) {
             serializer = CustomJsonSerializer(
                 KotlinxSerializer().apply {
                     setMapper(ListNamesResponse::class, ListNamesResponse.serializer())
+                    setMapper(ListsResponse::class, ListsResponse.serializer())
                 }
             )
         }
