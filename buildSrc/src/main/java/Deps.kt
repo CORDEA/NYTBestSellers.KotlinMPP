@@ -14,6 +14,7 @@ object Deps {
     private val coroutines_version = "1.2.0"
     val coroutines_core_common = "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:$coroutines_version"
     val coroutines_core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+    val coroutines_android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
 
     private val serialization_version = "0.11.0"
     val serialization_runtime_common =
