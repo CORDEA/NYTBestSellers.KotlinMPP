@@ -5,6 +5,8 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import org.koin.android.scope.currentScope
@@ -13,10 +15,14 @@ import org.koin.core.parameter.parametersOf
 class MainActivity : AppCompatActivity(), MainContract.View {
     val presenter = currentScope.inject<MainContract.Presenter> { parametersOf(this@MainActivity) }
 
+    private val adapter = GroupAdapter<ViewHolder>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+
+        recyclerView.adapter = adapter
     }
 
     override fun onResume() {
@@ -51,5 +57,8 @@ class MainActivity : AppCompatActivity(), MainContract.View {
             android.R.layout.simple_spinner_dropdown_item,
             items
         )
+    }
+
+    override fun updateItems(items: List<MainListItemModel>) {
     }
 }

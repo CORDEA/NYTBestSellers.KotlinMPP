@@ -8,7 +8,8 @@ import kotlin.coroutines.CoroutineContext
 
 internal class MainPresenter(
     private val view: MainContract.View,
-    private val repository: ListNamesRepository
+    private val listsRepository: ListsRepository,
+    private val listNamesRepository: ListNamesRepository
 ) : MainContract.Presenter, CoroutineScope {
     private lateinit var job: Job
 
@@ -16,9 +17,17 @@ internal class MainPresenter(
         job = Job()
         launch {
             view.updateSpinnerItems(
-                repository.getListNames()
+                listNamesRepository.getListNames()
                     .results
                     .map { it.encodedName }
+            )
+        }
+    }
+
+    override fun loadItems(id: String) {
+        launch {
+            view.updateItems(
+                listsRepository.getLists().toModels()
             )
         }
     }
