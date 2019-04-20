@@ -38,4 +38,5 @@ object Deps {
     val navigation_fragment_ktx = "android.arch.navigation:navigation-fragment-ktx:$nav_version"
     val navigation_ui = "android.arch.navigation:navigation-ui:$nav_version"
     val navigation_ui_ktx = "android.arch.navigation:navigation-ui-ktx:$nav_version"
+    val navigation_safe_args_plugin = "android.arch.navigation:navigation-safe-args-gradle-plugin:$nav_version"
 }
