@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -23,6 +25,9 @@ android {
     packagingOptions {
         exclude 'META-INF/*.kotlin_module'
     }
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -34,6 +39,9 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
     implementation Deps.koin_android
     implementation Deps.koin_android_scope
+    implementation Deps.groupie
+    implementation Deps.groupie_extensions
+    implementation Deps.groupie_databinding
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'

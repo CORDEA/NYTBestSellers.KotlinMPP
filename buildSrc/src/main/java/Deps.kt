@@ -27,4 +27,9 @@ object Deps {
     val koin_core_ext = "org.koin:koin-core-ext:$koin_version"
     val koin_android = "org.koin:koin-android:$koin_version"
     val koin_android_scope = "org.koin:koin-android-scope:$koin_version"
+
+    private val groupie_version = "2.3.0"
+    val groupie = "com.xwray:groupie:$groupie_version"
+    val groupie_extensions = "com.xwray:groupie-kotlin-android-extensions:$groupie_version"
+    val groupie_databinding = "com.xwray:groupie-databinding:$groupie_version"
 }
