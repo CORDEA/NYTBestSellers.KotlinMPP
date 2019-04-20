@@ -3,6 +3,8 @@ package jp.cordea.nytbestsellers
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import com.xwray.groupie.GroupAdapter
@@ -21,6 +23,15 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>) {
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>, p1: View, p2: Int, p3: Long) {
+                presenter.value.loadItems(parent.selectedItem.toString())
+            }
+        }
 
         recyclerView.adapter = adapter
     }
@@ -60,5 +71,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     }
 
     override fun updateItems(items: List<MainListItemModel>) {
+        adapter.clear()
+        adapter.addAll(items.map { MainListItem(it) })
     }
 }
