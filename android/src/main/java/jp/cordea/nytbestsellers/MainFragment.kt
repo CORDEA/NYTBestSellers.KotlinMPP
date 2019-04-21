@@ -25,6 +25,14 @@ class MainFragment : Fragment(), MainContract.View {
             .inject()
 
     private val adapter = GroupAdapter<ViewHolder>()
+    private val listener = object : AdapterView.OnItemSelectedListener {
+        override fun onNothingSelected(parent: AdapterView<*>) {
+        }
+
+        override fun onItemSelected(parent: AdapterView<*>, p1: View?, p2: Int, p3: Long) {
+            presenter.value.loadItems(parent.selectedItem.toString())
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,18 +42,13 @@ class MainFragment : Fragment(), MainContract.View {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>) {
-            }
-
-            override fun onItemSelected(parent: AdapterView<*>, p1: View?, p2: Int, p3: Long) {
-                presenter.value.loadItems(parent.selectedItem.toString())
-            }
-        }
-
         recyclerView.adapter = adapter
         adapter.setOnItemClickListener { item, _ ->
             presenter.value.showItemDetail(item.id)
+        }
+
+        savedInstanceState?.getString(STATE_KEY)?.let {
+            presenter.value.storeCurrentKey(it)
         }
     }
 
@@ -60,12 +63,21 @@ class MainFragment : Fragment(), MainContract.View {
         presenter.value.detach()
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString(STATE_KEY, presenter.value.currentKey)
+    }
+
     override fun updateSpinnerItems(items: List<String>) {
+        spinner.onItemSelectedListener = null
         spinner.adapter = ArrayAdapter<String>(
             requireContext(),
             android.R.layout.simple_spinner_dropdown_item,
             items
         )
+        spinner.onItemSelectedListener = listener
+        val index = items.indexOfFirst { it == presenter.value.currentKey }
+        spinner.setSelection(if (index >= 0) index else 0)
     }
 
     override fun updateItems(items: List<MainListItemModel>) {
@@ -79,5 +91,9 @@ class MainFragment : Fragment(), MainContract.View {
                 .actionMainFragmentToDetailFragment()
                 .setPosition(position)
         )
+    }
+
+    companion object {
+        private const val STATE_KEY = "STATE_KEY"
     }
 }

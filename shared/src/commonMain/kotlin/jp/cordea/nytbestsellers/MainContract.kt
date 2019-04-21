@@ -8,6 +8,8 @@ interface MainContract {
     }
 
     interface Presenter {
+        val currentKey: String?
+        fun storeCurrentKey(currentKey: String)
         fun attach()
         fun loadItems(id: String)
         fun detach()
