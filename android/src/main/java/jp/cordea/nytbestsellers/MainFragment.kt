@@ -80,8 +80,4 @@ class MainFragment : Fragment(), MainContract.View {
                 .setPosition(position)
         )
     }
-
-    companion object {
-        fun newInstance() = MainFragment()
-    }
 }

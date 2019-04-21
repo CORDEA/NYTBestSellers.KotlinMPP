@@ -44,8 +44,4 @@ class DetailFragment : Fragment(), DetailContract.View {
         publisher.text = model.publisher
         titleStateDispatcher.value.dispatch(model.title)
     }
-
-    companion object {
-        fun newInstance() = DetailFragment()
-    }
 }
