@@ -8,11 +8,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import kotlinx.android.synthetic.main.fragment_detail.*
+import org.koin.android.ext.android.getKoin
 import org.koin.android.scope.currentScope
 import org.koin.core.parameter.parametersOf
+import org.koin.core.qualifier.named
 
 class DetailFragment : Fragment(), DetailContract.View {
     val presenter = currentScope.inject<DetailContract.Presenter> { parametersOf(this@DetailFragment) }
+    val titleStateDispatcher: Lazy<ActivityTitleStateDispatcher> =
+        getKoin()
+            .getScope(named<MainActivity>().toString())
+            .inject()
 
     private val args: DetailFragmentArgs by navArgs()
 
@@ -36,6 +42,7 @@ class DetailFragment : Fragment(), DetailContract.View {
         description.text = model.description
         author.text = model.author
         publisher.text = model.publisher
+        titleStateDispatcher.value.dispatch(model.title)
     }
 
     companion object {

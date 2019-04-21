@@ -41,6 +41,8 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
     implementation Deps.koin_android
     implementation Deps.koin_android_scope
+    implementation Deps.coroutines_core
+    implementation Deps.coroutines_android
     implementation Deps.groupie
     implementation Deps.groupie_extensions
     implementation Deps.groupie_databinding

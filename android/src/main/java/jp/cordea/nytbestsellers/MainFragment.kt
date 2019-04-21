@@ -12,11 +12,17 @@ import androidx.navigation.fragment.findNavController
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.fragment_main.*
+import org.koin.android.ext.android.getKoin
 import org.koin.android.scope.currentScope
 import org.koin.core.parameter.parametersOf
+import org.koin.core.qualifier.named
 
 class MainFragment : Fragment(), MainContract.View {
     val presenter = currentScope.inject<MainContract.Presenter> { parametersOf(this@MainFragment) }
+    val titleStateDispatcher: Lazy<ActivityTitleStateDispatcher> =
+        getKoin()
+            .getScope(named<MainActivity>().toString())
+            .inject()
 
     private val adapter = GroupAdapter<ViewHolder>()
 
@@ -46,6 +52,7 @@ class MainFragment : Fragment(), MainContract.View {
     override fun onResume() {
         super.onResume()
         presenter.value.attach()
+        titleStateDispatcher.value.dispatch(getString(R.string.app_name))
     }
 
     override fun onPause() {
