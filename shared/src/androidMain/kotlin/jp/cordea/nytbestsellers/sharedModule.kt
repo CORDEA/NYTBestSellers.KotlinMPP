@@ -8,9 +8,14 @@ val sharedModule = module {
     single { ListNamesRemoteDataSource(get()) }
     single { ListNamesRepository(get()) }
     single { ListsRemoteDataSource(get()) }
-    single { ListsRepository(get()) }
+    single { ListsLocalDataSource() }
+    single { ListsRepository(get(), get()) }
 }
 
-fun ScopeSet.bindPresenter() {
+fun ScopeSet.bindMainPresenter() {
     scoped<MainContract.Presenter> { (view: MainContract.View) -> MainPresenter(view, get(), get()) }
+}
+
+fun ScopeSet.bindDetailPresenter() {
+    scoped<DetailContract.Presenter> { (view: DetailContract.View) -> DetailPresenter(view, get()) }
 }

@@ -5,6 +5,9 @@ import org.koin.dsl.module
 
 val appModule = module {
     scope(named<MainFragment>()) {
-        bindPresenter()
+        bindMainPresenter()
+    }
+    scope(named<DetailFragment>()) {
+        bindDetailPresenter()
     }
 }
