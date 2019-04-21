@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import kotlinx.android.synthetic.main.fragment_detail.*
 import org.koin.android.scope.currentScope
 import org.koin.core.parameter.parametersOf
 
@@ -32,6 +33,9 @@ class DetailFragment : Fragment(), DetailContract.View {
     }
 
     override fun render(model: DetailModel) {
+        description.text = model.description
+        author.text = model.author
+        publisher.text = model.publisher
     }
 
     companion object {
