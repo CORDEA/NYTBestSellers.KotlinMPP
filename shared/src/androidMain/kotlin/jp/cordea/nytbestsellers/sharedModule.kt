@@ -6,7 +6,8 @@ import org.koin.dsl.module
 val sharedModule = module {
     single { ApiClient(getProperty("token")) }
     single { ListNamesRemoteDataSource(get()) }
-    single { ListNamesRepository(get()) }
+    single { ListNamesLocalDataSource() }
+    single { ListNamesRepository(get(), get()) }
     single { ListsRemoteDataSource(get()) }
     single { ListsLocalDataSource() }
     single { ListsRepository(get(), get()) }

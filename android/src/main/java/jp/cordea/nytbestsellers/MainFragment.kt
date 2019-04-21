@@ -38,7 +38,7 @@ class MainFragment : Fragment(), MainContract.View {
             override fun onNothingSelected(parent: AdapterView<*>) {
             }
 
-            override fun onItemSelected(parent: AdapterView<*>, p1: View, p2: Int, p3: Long) {
+            override fun onItemSelected(parent: AdapterView<*>, p1: View?, p2: Int, p3: Long) {
                 presenter.value.loadItems(parent.selectedItem.toString())
             }
         }

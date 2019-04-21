@@ -1,14 +1,18 @@
 package jp.cordea.nytbestsellers
 
 internal class ListsLocalDataSource {
-    private var response: List<ListResponse> = emptyList()
+    private var currentKey: String? = null
+    private var response: ListsResponse? = null
 
-    fun find(position: Long) = response[position.toInt()]
+    fun get(list: String) = if (currentKey == list) response else null
 
-    fun store(response: ListsResponse) {
+    fun find(position: Long) = response!!.results[position.toInt()]
+
+    fun store(response: ListsResponse, list: String) {
         if (response.results.isEmpty()) {
             return
         }
-        this.response = response.results
+        this.currentKey = list
+        this.response = response
     }
 }

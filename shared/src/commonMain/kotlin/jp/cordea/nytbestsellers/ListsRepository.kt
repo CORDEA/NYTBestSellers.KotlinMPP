@@ -5,7 +5,7 @@ internal class ListsRepository(
     private val localDataSource: ListsLocalDataSource
 ) {
     suspend fun getLists(list: String): ListsResponse =
-        remoteDataSource.getLists(list).also { localDataSource.store(it) }
+        localDataSource.get(list) ?: remoteDataSource.getLists(list).also { localDataSource.store(it, list) }
 
     fun getList(position: Long): ListResponse =
         localDataSource.find(position)
