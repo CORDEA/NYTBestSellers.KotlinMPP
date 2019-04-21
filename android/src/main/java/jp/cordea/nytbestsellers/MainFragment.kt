@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -37,6 +38,9 @@ class MainFragment : Fragment(), MainContract.View {
         }
 
         recyclerView.adapter = adapter
+        adapter.setOnItemClickListener { item, _ ->
+            presenter.value.showItemDetail(item.id)
+        }
     }
 
     override fun onResume() {
@@ -60,6 +64,14 @@ class MainFragment : Fragment(), MainContract.View {
     override fun updateItems(items: List<MainListItemModel>) {
         adapter.clear()
         adapter.addAll(items.map { MainListItem(it) })
+    }
+
+    override fun openDetail(position: Long) {
+        findNavController().navigate(
+            MainFragmentDirections
+                .actionMainFragmentToDetailFragment()
+                .setPosition(position)
+        )
     }
 
     companion object {

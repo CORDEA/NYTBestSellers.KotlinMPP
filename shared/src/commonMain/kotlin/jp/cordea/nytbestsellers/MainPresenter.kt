@@ -32,6 +32,10 @@ internal class MainPresenter(
         }
     }
 
+    override fun showItemDetail(position: Long) {
+        view.openDetail(position)
+    }
+
     override fun detach() {
         job.cancel()
     }
